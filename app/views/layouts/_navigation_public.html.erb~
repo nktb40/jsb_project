@@ -1,0 +1,15 @@
+<%= link_to "JSB Braceletes", root_path, :class => 'brand' %>
+<ul class="nav">
+    <li>
+    <%= link_to('Браслеты', products_path)  %>
+    </li>
+    <li>
+    <%= link_to('Доставка', pages_delivering_path)  %>
+    </li>
+    <li>
+    <%= link_to('О нас', pages_about_path)  %>
+    </li>
+    <li>
+    <%= link_to('Контакты', pages_contact_path)  %>
+    </li>
+  </ul>

@@ -1,0 +1,245 @@
+﻿/********Глобальные настройки*********/
+*{/*Reset*/
+margin: 0;/*удаляем отступы внешние*/
+padding: 0;/*удаляем отступы внутренние*/
+}
+/*******Задаем стиль для тела сайта body*******/
+body { /* задаем стиль телу   */
+ font: 12px/18px Arial, Tahoma, Verdana, sans-serif; /* стиль шрифта-универсальный: размер/межстрочное расстояние и
+ Стиль семейства по приоритетности - обязательные свойства*/
+ width: 100%; /* ширина тела - на всю ширину*/
+ height: 100%;/* высота тела - на всю высоту*/
+ background:#fff; /*фон белый - можно и не писать, но лучше перестраховаться*/
+}
+ img{border: 0;}
+/***********Стиль абзаца***********/
+ p { 
+color:#b8b8b8; /* цвет текста в абзацах*/
+margin: 0 0 10px 0; /*внешний отступ: сверху справа снизу слева (по часовой стелке,обычно задается только снизу)*/
+line-height: 2em; /* межстрочный интервал */
+font-size: 15px ;/* размер шрифта&nbsp; */
+}
+a { /* ссылки */
+/*color:#8c6641;*/
+text-decoration: none; /* подчеркивание: нет */
+outline: none; /*точечная рамка вокруг ссылок при нажатии: нет*/
+}
+a:hover {/* ссылки при наведении курсором */
+color: red;
+}
+body {background-color:#d1dce2;}
+/******Закруглене для всех панелей*******/
+.rounded{
+border-radius: 4px; /* закругления - общее*/
+-webkit-border-radius: 4px; /*для&nbsp; Chrome и Safari */
+-moz-border-radius: 4px;/*для&nbsp; ff */
+-khtml-border-radius:4px; /*для Konqueror*/
+}
+/*************Main panel****************/
+#main_panel { /* оболочка сайта, куда мы все помещаем */
+margin: 20px auto; /* внешний отступ: сверху/снизу справа/слева; auto устанавливает блок по центру*/
+background: url(<%= image_path("main-content.gif") %>) repeat-x #fff; /*Фон: ссылка на картинку повторение по горизонтали цвет белый(т.к. картинка у нас не везде, где ее нет - белый цвет)*/
+width: 947px; /* ширина оболочки (сайта)*/
+position: relative;/* позиция: относительно исходного места */
+min-height: 100%; /*мнимальная высота: на высоту экрана (в ie 6 не работает)*/
+border: 1px solid #ccc; /*рамка: ширина в пикселях сплошная(solid) #цвет*/
+/* не проходят валидацию в ccs 2, закругления с помощью css 3 */
+border-radius: 4px; /* закругления - общее*/
+-webkit-border-radius: 4px; /*для&nbsp; Chrome и Safari */
+-moz-border-radius: 4px;/*для&nbsp; ff */
+-khtml-border-radius:4px; /*для Konqueror*/
+}
+/*************Header***************/
+div#header{
+width: 100%;
+height: 50px;
+background: url(<%= image_path("main-content.gif") %>) repeat;
+}
+/***Логотип***/
+#logo{
+background:  url(<%= image_path("logo.png") %>) no-repeat;
+height: 37px;
+width: 320px;
+margin: 30px;
+float: left;
+}
+
+#user_nav {
+float: right;
+margin-right: 20px;
+font-style:normal;
+}
+
+#korzina{
+	float: right;
+	margin-right: 20px;
+	text-align: center;
+	}
+	
+	
+/***Меню***/
+ul.top_menu li a:hover {/* ссылки при наведении курсором */
+color: white;
+}
+.menu_style{
+height:30px;
+padding-left: 10px;
+padding-right: 10px;
+padding-top: 5px;
+font-weight: bold;
+}
+
+#menu_bar{
+	width:100%;
+	height:33px;
+	background: url(<%= image_path("navigation.gif") %>) repeat-x;
+}
+ul.top_menu{
+	list-style:none;
+	padding:0 40px;
+	float:left;
+}
+ul.top_menu li{
+	/*border: 1px solid black;*/
+	float:left;
+	width:auto;	
+}
+
+a.in_vk{
+	background: url(<%= image_path("rss.png")%>) no-repeat;
+	width:30px;
+	height:30px;
+	float:right;
+	margin-right:30px;
+	margin-top:5px;
+}
+#middle {/* центарльный блок*/
+width: 100%;
+padding: 0 0;
+padding-bottom:85px;
+position: relative;
+background: url(<%= image_path("main-content.gif")%>) repeat;
+}
+#middle:after {/*отступ для центрального блока - уберите его и помотрите результат, думаю станет ясно для чего он нужен*/
+content: '.';
+display: block;
+clear: both;
+visibility: hidden;
+height: 0;
+}
+
+/******Основной контент---->>>>********/
+div#content {/* центральный блок с текстом*/
+float: left;
+margin: 5px 0 5px 10px;
+padding: 0px 0 10px 0px;
+width: 690px;/*зададим ширину чтоб не скакало ничего*/
+}
+
+.content_panel{
+   background-color: #fff;
+   padding: 10px;
+   max-width: 100%;
+
+   min-height: 355px;
+}
+
+/********index********/
+
+
+/******Боковая панель---->>>>********/
+div#sidebar {/* стиль для сайдбара */	
+float: right;
+margin: 5px 10px 5px 0;
+padding: 0 10px 0px 0;
+width: 200px;
+}
+
+/***Панель для бокового меню***/
+div#right_menu {/* стиль для сайдбара */
+border: 1px solid white;
+background-color: #f6fbff;
+margin: 0 0 10px 0;
+padding: 5px;
+width: 200px;
+min-height:100px;
+}
+#right_menu h1 {
+text-align:left;
+margin-left:15px;
+margin-bottom:10px;
+color:#939393;
+font-size:18px;
+font-weight: normal;
+}
+/***Боковое меню****/
+#right_menu ul {
+list-style:none;
+margin-bottom:10px;
+border: 1px solid white;
+background: url(<%= image_path("sb_bg.png")%>) repeat;
+/*background-color:#ccc;*/
+}
+#right_menu ul li{
+padding:0;
+margin:0;
+}
+#right_menu ul li p{
+padding-left:0;
+width:100px;
+margin-left:10px;
+margin-top:0;
+margin-bottom:0;
+color:grey;
+font-size:12px;
+}
+#right_menu ul li:hover{
+ background-color:white;
+}
+
+div#free_panel {/* стиль для сайдбара */
+border: 1px solid white;
+background-color: #f6fbff;
+margin: 10px 0 0 0;
+padding: 10px 10px 10px 0;
+width: 200px;
+min-height:100px;
+}
+#free_panel h3{
+font-size:10px;
+color:grey;
+}
+#free_panel img{
+width:100%;
+margin:5px;
+}
+/**********************footer***************/
+div#footer {/* подвал сайта */
+border-top: 1px solid #CCCCCC;
+position: absolute; /*позиция блока: абсолютная*/
+bottom: 0; /*прижимаем footer к нижней части браузера*/
+height: 85px;
+margin: 0 30px;
+width: 875px;
+
+}
+p.copyright {/* текст копирайта */
+float: left;
+width:50%;
+padding-top: 25px;
+font-size: 12px;
+}
+.fb, .tw {/* блоки для иконок */
+float:right;
+width:200px;
+padding-top: 10px;
+}
+.fb img, .tw img {
+float:left;
+width:40px;
+padding-right: 5px;
+}
+.fb p, .tw p {
+padding-top: 10px;
+}
+

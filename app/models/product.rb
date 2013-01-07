@@ -1,0 +1,4 @@
+class Product < ActiveRecord::Base
+  attr_accessible :description, :image, :name, :price, :product_code, :product_status, :image
+  mount_uploader :image, ImageUploader  
+end

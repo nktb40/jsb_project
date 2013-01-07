@@ -1,0 +1,14 @@
+<!--Блоки продуктов-->
+<div class="row">
+<ul class="thumbnails">
+  <% @products.each do |product| %>
+  <li class="span4">
+    <%= link_to product, :class =>"thumbnail" do %>
+    <%= image_tag(product.image_url(:thumb)) %>
+    <p><%= product.name %></p>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+<%= paginate @products %>
+</div>

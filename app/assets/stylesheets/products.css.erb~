@@ -1,0 +1,24 @@
+div#blocks_panel{
+background-color: #fff;
+padding:10px;
+width: 100%;/*зададим ширину чтоб не скакало ничего*/
+min-height:355px;
+
+}
+#blocks_panel div {display:inline-block;}
+.block-product{
+border: 1px solid #ccc;
+width:205px;
+height:170px;
+padding:5px;
+margin:5px;
+}
+.block-product img{
+ width:200px;
+ height:150px;
+}
+.block-product p{
+ text-align:center;
+ color:black; 
+ font-size: 11px;
+}

@@ -1,0 +1,9 @@
+function showMessage(text) {
+ $("body").append("<div id='messagebox_cont'> <div id='messagebox' class='rounded'><div><h3>Сообщение!</h3><br><h4>"+text+"</h4><br></div> </div>");
+}
+function showMessage2(text) {
+ $("body").append("<div id='messagebox_cont'> div id='messagebox' class='rounded'> <h3>Сообщение!</h3><br> <h4>"+text+"</h4><br> <input type='button' value='OK' onClick = 'hideMessage()' /> </div> </div>");
+}
+function hideMessage() {
+ $("#messagebox").remove();
+}

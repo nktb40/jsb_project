@@ -1,0 +1,3 @@
+.edit_class{
+border: 3px solid red;
+}

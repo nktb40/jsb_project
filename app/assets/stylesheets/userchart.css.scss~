@@ -1,0 +1,13 @@
+#userchart_panel {
+background-color: #fff;
+float: left;
+margin: 0 0 5px 0;
+padding: 20px 0 10px 10px;
+width: 100%;
+min-height:100px;
+}
+#kv{
+width: 100px;
+height: 100px;
+background-color: red;
+}

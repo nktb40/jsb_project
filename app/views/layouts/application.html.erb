@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "JSB bracelets" %></title>
+    <meta name="description" content="">
+    <meta name="author" content="nikita" >
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <div id="header" class="container-fluid">
+    	<div class="row-fluid">
+			<!-- Header -->
+			<div class="span5">
+				<h1 id="logo">Julia Bracelets</h1>
+				<p id="sub-logo">Браслеты из натуральных камней</p>
+			</div>
+			<div class="span3 offset4">			
+				<div id="user_nav">
+				  <% if user_signed_in? %>
+				    <%= current_user.email %>
+				    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+				  <% else %>
+				    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+				  <% end %>
+				</div>
+			</div>    	
+    	</div>
+    </div>
+ 	<!-- NavBar -->
+ 	<div class="navbar  navbar-inverse">
+		<div class="navbar-inner">
+			<div class="container">
+	        <%= render 'layouts/navigation_public' %>
+	      </div>
+		</div>
+ 	</div>
+    <div  class="container">
+    	<div id="middle" class="row-fluid">
+    		<div id="sidebar" class="span3">
+    		<!-- sidebar-->
+    		<div class="infoBoxWrapper list"> 
+	    		<div class="infoBoxHeading">Категории</div>  
+	         <div class="infoBoxContents">
+		         <ul class="nav">
+				    <li>
+				    <%= link_to('Браслеты', products_path)  %>
+				    </li>
+				    <li>
+				    <%= link_to('Доставка', pages_delivering_path)  %>
+				    </li>
+				    <li>
+				    <%= link_to('О нас', pages_about_path)  %>
+				    </li>
+				    <li>
+				    <%= link_to('Контакты', pages_contact_path)  %>
+				    </li>
+				  </ul>
+				</div>
+			</div>
+    		</div>
+    		<div id="content" class="span9">
+    		 <!--Body content -->
+    		 <%= yield %>
+    		</div>
+    	</div>   
+    </div>
+    <div id="footer" class="container-fluid">
+    	<div class="copyright">
+	    	<p>Copyright © 2013 <%= link_to "Julia Bracelets" %></p>
+	    </div> 	
+    </div>
+  </body>
+</html>

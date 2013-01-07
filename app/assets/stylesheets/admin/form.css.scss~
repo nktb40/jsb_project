@@ -1,0 +1,4 @@
+#product_description{
+	width: 700px;
+	height: 100px;
+}

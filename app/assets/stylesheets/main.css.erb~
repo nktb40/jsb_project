@@ -1,0 +1,9 @@
+#header{
+	border: 1px solid red;	
+	}
+.row-fluid{
+	background-color: red;	
+	}
+.row{
+	border: 1px solid #ccc;
+}

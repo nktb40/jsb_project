@@ -1,0 +1,62 @@
+	
+<div class="row row_1">
+<div id="carusel" class="span8">	
+	<div id="myCarousel" class="carousel slide">
+	 <div class="carousel-inner">
+	   <div class="item">
+	     <%= image_tag("00001.jpg")%>
+	     <div class="carousel-caption">
+	       <h4>First Thumbnail label</h4>
+	       <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+	     </div>
+	   </div>
+	   <div class="item">
+	    <%= image_tag("00002.jpg")%>
+	     <div class="carousel-caption">
+	       <h4>Second Thumbnail label</h4>
+	       <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+	     </div>
+	   </div>
+	   <div class="item active">
+	     <%= image_tag("00003.jpg")%>
+	     <div class="carousel-caption">
+	       <h4>Third Thumbnail label</h4>
+	       <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+	     </div>
+	   </div>
+	 </div>
+	 <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+	 <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+  </div> <!-- myCarusel -->
+  </div> <!-- span5 -->
+
+  <div class="span4"><div class="img-polaroid "><%= image_tag("00006_b.jpg") %>
+  <div class="caption">
+  <%= button_tag("Новинки", :class=>"btn") %></div>
+  </div>
+  </div><!-- end row-->
+  <div class="row">
+  	<ul class="thumbnails">
+  		<li class="span4">
+  			<%= link_to "", :class=>"thumbnail" do %> 
+  			<%= image_tag("00001.jpg") %>
+  			<% end %>
+  		</li>
+  		<li class="span4">
+  			<div class="thumbnail"> 
+  			<%= image_tag("00003.jpg") %>
+  			<div class="caption">
+  				<p>Браслеты из камня</p>
+  				<%= button_tag("Перейти", :class=>"btn offset3") %>
+  			</div
+  			</div>
+  		</li>
+  		<li class="span4">
+  			<%= link_to "", :class=>"thumbnail" do %> 
+  			<%= image_tag("00002.jpg") %>
+  			<% end %>
+  		</li>
+  	</ul>
+  </div>
+  
+  

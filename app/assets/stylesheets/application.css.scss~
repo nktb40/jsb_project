@@ -1,0 +1,95 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+@import "bootstrap";
+@import "bootstrap-responsive";
+@import url(http://fonts.googleapis.com/css?family=Allura|Sevillana|Clicker+Script);
+
+#header{
+	height: 110px;
+	background: image-url("row_1.jpg") repeat-x;	
+	}
+#logo{
+  font-family: 'Clicker Script', cursive;
+  font-size: 4em;
+  margin-top: 30px;
+  color: black;
+  }
+#sub-logo{
+	float: right;
+	margin-right: 20px;
+}
+#middle{
+    background-color: white;	
+    padding: 10px;
+	}
+#sidebar{
+	padding-right: 10px;	
+	}
+.row_1{
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 10px;
+}
+h3, h5{
+	margin-top: 0px;	
+	}
+.page-header{
+	margin-top: 0px;
+	margin-left: 15px;	
+	}
+#footer{
+	margin-top: 10px;
+	height: 50px;
+	background-color: black;
+	}
+.thumbnail{
+	min-height: 100px;
+}
+.span{
+	margin-left:5px;
+}
+.copyright{
+	margin-top: 15px;
+}
+
+.infoBoxWrapper {
+    margin: 0px 0px 10px;
+    padding: 0px;
+}
+.infoHeading, .infoBoxWrapper .infoBoxHeading {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-transform: uppercase;
+    background: none repeat scroll 0% 0% rgb(75, 75, 75);
+    overflow: hidden;
+    padding: 8px 0px 6px 15px;
+}
+.infoBoxContents {
+    font-size: 1,145em;
+    line-height: 1.6em;
+    color: rgb(149, 149, 149);    background-color: white;
+    overflow: hidden;
+}
+.infoContents, .infoBoxWrapper .infoBoxContents {
+    padding: 10px 16px 7px;
+}
+body {
+    background: image-url("bg_body.jpg") repeat;	
+}
+.infoBoxContents li a {
+    color: rgb(90, 86, 86);
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 3px 0px 3px 13px;
+    background: url("../images/list_bg.gif") no-repeat scroll 0px 10px transparent;
+}
+.product-description{
+	border: 1px solid #ccc;
+	margin-bottom: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;	
+	}

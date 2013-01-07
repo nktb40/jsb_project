@@ -1,0 +1,38 @@
+#neworder_panel{
+	background-color: #fff;
+   padding: 10px;
+   width: 100%;
+   min-height: 355px;
+	}
+#order_title{margin-top: 50px; color: grey; border-bottom: 1px solid grey; }	
+#order_form{
+	border: 3px solid #ccc;
+	padding: 10px;
+	padding-bottom: 50px;
+	}
+form{ width: 400px;
+	margin-top: 20px;
+	color: grey;
+}
+
+#order_recipient_name{	
+	width: 500px;
+}
+
+#order_phone{
+	width: 500px;
+}
+#order_email{
+	width: 500px;
+}
+#order_comments{
+	width: 500px;
+	height: 100px;
+	font-size: 14px;
+}
+#order_adress{
+	height: 70px;
+	width: 500px;
+	font-size: 14px;
+}
+	

@@ -1,0 +1,3 @@
+function showMessage(text) {
+ $("#main_panel").append(<h1>Hello World</h1>);
+}
