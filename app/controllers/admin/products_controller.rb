@@ -1,7 +1,7 @@
 class Admin::ProductsController < ApplicationController
 	layout "admin"
 
-  before_filter :authorize, :except => :index
+   before_filter :authenticate_admin! # Tell devise to use :admin map
   def index
     @products = Product.all
 

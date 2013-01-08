@@ -1,5 +1,6 @@
 class Admin::OrdersController < ApplicationController
   layout "admin"
+  before_filter :authenticate_admin! # Tell devise to use :admin map
   # GET /admin/orders
   # GET /admin/orders.json
   def index

@@ -24,13 +24,16 @@
 				<% current_or_guest_user %>
 				  <% if current_user %>
 				    <%= current_user.email %>
-				    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+				    <%= link_to "Выйти", destroy_user_session_path, :method => :delete %>
 				  <% else %>
-				  	 <%= guest_user.email %>
-				    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+				  	 Гость
+				    <%= link_to "Зарегистрироваться", new_user_registration_path %> или <%= link_to "Войти", new_user_session_path %>
 								  
 				  <% end %>
 				</div>
+				<% if current_user %>
+				<h1> Admin</h1>
+				<% end %>
 			</div>    	
     	</div>
     </div>

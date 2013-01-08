@@ -1,8 +1,37 @@
 class ApplicationController < ActionController::Base
+  layout :layout_by_resource
   helper_method :current_or_guest_user
   helper_method :guest_user
+  
   protect_from_forgery
 
+	
+	protected
+	
+	def layout_by_resource
+	  if devise_controller? && resource_name == :admin
+	    "empty"
+	  else
+	    "application"
+	  end
+	end
+
+  def authorize
+  unless current_user.admin?
+    flash[:error] = "unauthorized access"
+    redirect_to home_path
+    false
+  end
+  end
+  
+  def after_sign_in_path_for(admins)
+  	admin_path
+  end
+  
+  def after_sign_out_path_for(admins)
+  	new_admin_session_path
+  end
+  
   # if user is logged in, return current_user, else return guest_user
   def current_or_guest_user
     if current_user

@@ -7,6 +7,15 @@
     <%= link_to('Заказы', admin_orders_path)  %>
     </li>
     <li>
-    <%= link_to('Пользователи', users_path)  %>
+    <%= link_to('Пользователи', admin_users_path)  %>
     </li>
+    <div class="span3 offset3">
+    <% if current_admin  %>
+    <p class="navbar-text"> <%= current_admin.email %>
+	  <%= link_to "Sign out", destroy_admin_session_path, :method => :delete %>
+	 </p>    
+    <% else %>
+    	<% redirect_to new_admin_session %>
+    <% end %>
+    </div>
   </ul>

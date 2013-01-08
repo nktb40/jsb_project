@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+  layout "admin"
   # GET /admin/orders
   # GET /admin/orders.json
   def index
