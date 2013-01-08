@@ -21,11 +21,14 @@
 			</div>
 			<div class="span3 offset4">			
 				<div id="user_nav">
-				  <% if user_signed_in? %>
+				<% current_or_guest_user %>
+				  <% if current_user %>
 				    <%= current_user.email %>
 				    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 				  <% else %>
+				  	 <%= guest_user.email %>
 				    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+								  
 				  <% end %>
 				</div>
 			</div>    	

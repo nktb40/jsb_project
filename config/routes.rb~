@@ -1,9 +1,7 @@
 JsbProject::Application.routes.draw do
+  devise_for :users
 
   resources :orders
-
-
-  resources :users
 
 
   get "pages/home"
@@ -23,7 +21,7 @@ JsbProject::Application.routes.draw do
     collection do
       delete 'destroy_multiple'
     end
-  end
+    end
     resources :orders
   end
 

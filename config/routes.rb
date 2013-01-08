@@ -1,11 +1,7 @@
 JsbProject::Application.routes.draw do
-
   devise_for :users
 
   resources :orders
-
-
-  resources :users
 
 
   get "pages/home"
@@ -17,8 +13,7 @@ JsbProject::Application.routes.draw do
   get "pages/delivering"
 
   get "admin" => "admin/pages#home"
-  
-  #delete "admin/products/" => "admin/products#destroy_multiple"
+ 
   
   namespace :admin do
     resources :products do
@@ -27,6 +22,7 @@ JsbProject::Application.routes.draw do
     end
     end
     resources :orders
+    resources :users
   end
 
 

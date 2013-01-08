@@ -1,0 +1,32 @@
+  <h3>Пользователи</h3>
+
+
+<table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>E-mail</th>
+    <th>Последний раз был</th>
+    <th>Создан</th>
+    <th>Изменен</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @admin_users.each do |admin_user| %>
+  <tr>
+  	 <td><%= admin_user.id %></td>
+  	 <td><%= admin_user.email %></td>
+  	 <td><%= admin_user.last_sign_in_at %></td>
+  	 <td><%= admin_user.created_at %></td>
+  	 <td><%= admin_user.updated_at %></td>
+   
+    <td><%= link_to 'Edit', edit_admin_user_path(admin_user) %></td>
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User', new_admin_user_path %>
