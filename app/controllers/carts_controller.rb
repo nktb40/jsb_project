@@ -5,13 +5,13 @@ class CartsController < ApplicationController
 
   def show
     @user = current_or_guest_user
-  	 @cartitems = @user.cart_items
+  	 @cartitems = @user.cart_items.where(:item_type=>"cart")
   end
   
   def add
   	@user = current_or_guest_user
    @cartitem = @user.cart_items.new
-
+   @cartitem.item_type = "cart"
    @product = Product.find(params[:product_id])
    if @product
       @items = @user.cart_items.where(:product_id => @product.id)

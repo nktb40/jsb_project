@@ -42,11 +42,19 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(params[:order])
-
+	 @user = current_or_guest_user
+	 @order.user_id = @user.id
+	 @order.status = "processing"
+	 @order.delivering_method = "courier"
+	 @order.save
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render json: @order, status: :created, location: @order }
+         @items = @user.cart_items.where(:item_type=>"cart")
+  	      @items.each do |item|
+  	      item.item_type = "order"
+  	      item.save
+  	      end	
+        redirect_to @order, notice: 'Номер Вашего заказа: '+@order.id.to_s+'. Наш оператор скоро с Вами свяжется.'      
       else
         format.html { render action: "new" }
         format.json { render json: @order.errors, status: :unprocessable_entity }
