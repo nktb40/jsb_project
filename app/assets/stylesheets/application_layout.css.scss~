@@ -1,3 +1,13 @@
+
+#log-panel{
+	float: right;
+	}
+#cart-button{
+	float: right;	
+	}
+#nav{
+	padding: 5px;	
+	}
 #header{
 	height: 110px;
 	background: image-url("row_1.jpg") repeat-x;	
@@ -68,7 +78,7 @@ h3, h5{
 }
 body {
     background: image-url("bg_body.jpg") repeat;	
-    margin-top: 0px;
+    padding-top: 0px;
 }
 .infoBoxContents li a {
     color: rgb(90, 86, 86);

@@ -13,7 +13,7 @@
 				<h4>Цена: <%= @product.price %> руб.</h4>
 			</div>
 			<div class="span3 offset5">
-				<%= link_to products_path, :class=>"btn btn-info" do %>					
+				<%= link_to add_to_cart_path(@product), :class=>"btn btn-info" do %>					
 					<i class=" icon-white icon-plus"></i>
 					Добавить в корзину
 				<% end %>

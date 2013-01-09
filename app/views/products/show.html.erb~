@@ -13,14 +13,14 @@
 				<h4>Цена: <%= @product.price %> руб.</h4>
 			</div>
 			<div class="span3 offset5">
-				<%= link_to products_path, :class=>"btn btn-info" do %>					
+				<%= link_to add_to_cart_path(@product), :remote => true, :class=>"btn btn-info" do %>					
 					<i class=" icon-white icon-plus"></i>
 					Добавить в корзину
 				<% end %>
 			</div>
 		</div>
 		<div class="span6">
-			<div id="b_image">
+			<div>
 				<%= link_to image_tag(@product.image_url.to_s), image_path(@product.image_url.to_s), :id => "b_image" %>
 			</div>
 		</div>

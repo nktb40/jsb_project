@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
   helper_method :current_or_guest_user
   helper_method :guest_user
+  helper_method :total_quantity
   
   protect_from_forgery
 
@@ -10,7 +11,7 @@ class ApplicationController < ActionController::Base
 	
 	def layout_by_resource
 	  if devise_controller? && resource_name == :admin
-	    
+	    "empty"
 	  else
 	    "application"
 	  end
@@ -24,13 +25,23 @@ class ApplicationController < ActionController::Base
   end
   end
   
-  def after_sign_in_path_for(admins)
+  def after_sign_in_path_for(resource)
+   if current_admin
   	admin_path
+  	if current_user
+  	root_path
+  	end
   end
   
-  def after_sign_out_path_for(admins)
+  
+  def after_sign_out_path_for(resource)
+  	if current_admin
   	new_admin_session_path
+  	if current_user
+  	root_path
+  	end
   end
+
   
   # if user is logged in, return current_user, else return guest_user
   def current_or_guest_user
@@ -70,4 +81,14 @@ class ApplicationController < ActionController::Base
     u.save(:validate => false)
     u
   end
+  
+   def total_quantity
+  	 @user = current_or_guest_user
+  	 @items = @user.cart_items.all
+  	 @quantity = 0
+  	 @items.each do |item|
+  	 	@quantity += item.quantity
+  	 end	
+  	 @quantity
+  end  
 end

@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
+  
+  
   def index
     @products = Product.page(params[:page]).per(3)
   end

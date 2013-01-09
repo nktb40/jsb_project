@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table table-bordered">
+  <tr>
+    <th>№</th>
+    <th>Товар</th>
+    <th>Цена</th>
+    <th>Количество</th>
+    <th>Сумма</th>
+    <th></th>
+  </tr>
+<% @i =0 %>
+<% for item in @cartitems %>
+<% @i+=1 %>
+  <tr>
+  	 <td><%= @i %></td>
+  	 <td><%= item.product.name %></td>
+  	 <td><%= item.product.price %></td>
+  	 <td><%= item.quantity %></td>
+  	 <td><%= item.quantity*item.product.price %></td>
+  	 <td><%= link_to "Удалить" %></td>
+  </tr>
+  <% end %>
+  <tr>
+  		<td></td>
+  		<td></td>
+  		<td></td>
+		<td><b>Итог:</b></td>
+		<td><b><%= sum_up %></b></td>
+		<td><%= link_to "Пересчитать", recalculate_path, :class=>"btn" %></td>  
+  </tr>
+</table>
+

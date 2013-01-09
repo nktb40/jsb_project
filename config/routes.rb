@@ -1,5 +1,8 @@
 JsbProject::Application.routes.draw do
-
+  resource :cart
+  
+  resources :cart_items
+  
   devise_for :admins
 
   devise_for :users
@@ -16,7 +19,10 @@ JsbProject::Application.routes.draw do
   get "pages/delivering"
 
   get "admin" => "admin/pages#home"
- 
+  
+  get "cart/add/:product_id" => "carts#add", :as => "add_to_cart"
+  
+  get "cart/recalculate" => "carts#recalculate", :as => "recalculate"
   
   namespace :admin do
     resources :products do

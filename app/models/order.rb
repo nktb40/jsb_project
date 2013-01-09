@@ -1,3 +1,6 @@
 class Order < ActiveRecord::Base
-  attr_accessible :product_id, :quantity, :user_id
+  belongs_to :user
+  has_many :order_items
+  attr_accessible :user_id, :customer_name,
+   :email, :adress, :phone, :comments, :status, :delivering_method
 end
