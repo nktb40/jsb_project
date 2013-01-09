@@ -1,18 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Product:</b>
-  <%= @order.product_id %>
+  <b>Имя:</b>
+  <%= @order.customer_name %>
 </p>
 
 <p>
-  <b>User:</b>
-  <%= @order.user_id %>
+  <b>Email:</b>
+  <%= @order.email %>
 </p>
 
 <p>
-  <b>Quantity:</b>
-  <%= @order.quantity %>
+  <b>Арес:</b>
+  <%= @order.adress %>
+</p>
+<p>
+<b>Телефон:</b>
+  <%= @order.phone %>
+</p>
+<b>Примечания:</b>
+  <%= @order.comments %>
 </p>
 
 

@@ -1,5 +1,16 @@
+# coding: utf-8
 class OrdersController < ApplicationController
- 
+before_filter :filter_current_user, :only => [:show]
+
+
+def filter_current_user
+	unless current_user
+    flash[:error] = "unauthorized access"
+    redirect_to root_path
+    false
+  end
+end
+
   # GET /orders
   # GET /orders.json
   def index
@@ -28,7 +39,7 @@ class OrdersController < ApplicationController
     @order = Order.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html  #new.html.erb
       format.json { render json: @order }
     end
   end
@@ -46,15 +57,17 @@ class OrdersController < ApplicationController
 	 @order.user_id = @user.id
 	 @order.status = "processing"
 	 @order.delivering_method = "courier"
-	 @order.save
+	 
     respond_to do |format|
       if @order.save
          @items = @user.cart_items.where(:item_type=>"cart")
-  	      @items.each do |item|
-  	      item.item_type = "order"
-  	      item.save
-  	      end	
-        redirect_to @order, notice: 'Номер Вашего заказа: '+@order.id.to_s+'. Наш оператор скоро с Вами свяжется.'      
+	  	   @items.each do |item|
+	  	      item.item_type = "order"
+	  	      item.save
+	  	   end
+	  	UserMailer.order_email(@order, @user).deliver
+      format.html { redirect_to @order, notice: 'Ваш заказ принят.' }
+      format.json { render json: @order, status: :created, location: @rder }  
       else
         format.html { render action: "new" }
         format.json { render json: @order.errors, status: :unprocessable_entity }

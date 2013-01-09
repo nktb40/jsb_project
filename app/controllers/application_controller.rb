@@ -69,11 +69,11 @@ class ApplicationController < ActionController::Base
   # to hand off from guest_user to current_user.
   def logging_in
     # For example:
-    # guest_comments = guest_user.comments.all
-    # guest_comments.each do |comment|
-      # comment.user_id = current_user.id
-      # comment.save
-    # end
+    guest_cart_items = guest_user.cart_items.all
+    guest_cart_items.each do |item|
+      item.user_id = current_user.id
+      item.save
+    end
   end
 
   def create_guest_user
@@ -84,7 +84,7 @@ class ApplicationController < ActionController::Base
   
    def total_quantity
   	 @user = current_or_guest_user
-  	 @items = @user.cart_items.all
+  	 @items = @user.cart_items.where(:item_type=>"cart")
   	 @quantity = 0
   	 @items.each do |item|
   	 	@quantity += item.quantity
