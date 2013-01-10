@@ -1,44 +1,15 @@
 class CartItemsController < ApplicationController
-  
-  
-  def index
-    @cart_items = CartItem.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @cart_items }
-    end
+  before_filter :filter_current_user, :only => [:update, :destroy]
+
+  def filter_current_user
+		unless current_user
+	    flash[:error] = "unauthorized access"
+	    redirect_to root_path
+	    false
+	  end
   end
-
-  # GET /cart_items/1
-  # GET /cart_items/1.json
-  def show
-    @cart_item = CartItem.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @cart_item }
-    end
-  end
-
-  # GET /cart_items/new
-  # GET /cart_items/new.json
-  def new
-    @cart_item = CartItem.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @cart_item }
-    end
-  end
-
-  # GET /cart_items/1/edit
-  def edit
-    @cart_item = CartItem.find(params[:id])
-  end
-
-  # POST /cart_items
-  # POST /cart_items.json
+	 
   def create
     @cart_item = CartItem.new(params[:cart_item])
 
@@ -53,8 +24,6 @@ class CartItemsController < ApplicationController
     end
   end
 
-  # PUT /cart_items/1
-  # PUT /cart_items/1.json
   def update
     @cart_item = CartItem.find(params[:id])
 
@@ -69,15 +38,9 @@ class CartItemsController < ApplicationController
     end
   end
 
-  # DELETE /cart_items/1
-  # DELETE /cart_items/1.json
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-
-    respond_to do |format|
-      format.html { redirect_to cart_items_url }
-      format.json { head :no_content }
-    end
+    redirect_to :back
   end
 end

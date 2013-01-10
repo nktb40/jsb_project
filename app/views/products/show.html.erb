@@ -8,15 +8,15 @@
 	</div>
 	<div class="row-fluid product-description">
 	   <div class="row-fluid page-header">
-	   	<div class="span3">
-				<h3><%= @product.name %></h3>
-				<h4>Цена: <%= @product.price %> руб.</h4>
-			</div>
-			<div class="span3 offset5">
-				<%= link_to add_to_cart_path(@product), :class=>"btn btn-info" do %>					
-					<i class=" icon-white icon-plus"></i>
-					Добавить в корзину
-				<% end %>
+	   	<div class="span">
+				<h3><%= @product.name %></h3> 
+				<h4> Цена: <%= @product.price %> руб.</h4>
+				<div class="on-right">
+					<%= link_to add_to_cart_path(@product), :class=>"btn btn-info" do %>					
+						<i class=" icon-white icon-plus"></i>
+						Добавить в корзину
+					<% end %>
+				</div>
 			</div>
 		</div>
 		<div class="span6">

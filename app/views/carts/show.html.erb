@@ -1,5 +1,4 @@
 
-
 <table class="table table-bordered">
   <tr>
     <th>№</th>
@@ -14,11 +13,11 @@
 <% @i+=1 %>
   <tr>
   	 <td><%= @i %></td>
-  	 <td><%= item.product.name %></td>
+  	 <td><%= link_to item.product.name, product_url(item.product_id) %></td>
   	 <td><%= item.product.price %></td>
   	 <td><%= item.quantity %></td>
   	 <td><%= item.quantity*item.product.price %></td>
-  	 <td><%= link_to "Удалить" %></td>
+  	 <td><%= link_to "Удалить", item, method: :delete %></td>
   </tr>
   <% end %>
   <tr>

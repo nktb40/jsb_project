@@ -1,7 +1,7 @@
 JsbProject::Application.routes.draw do
   resource :cart
   
-  resources :cart_items
+  resources :cart_items, only: [:create, :update, :destroy]
   
   devise_for :admins
 

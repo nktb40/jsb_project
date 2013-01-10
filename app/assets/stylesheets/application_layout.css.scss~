@@ -1,6 +1,7 @@
 
 #log-panel{
 	float: right;
+	margin-bottom: 5px;
 	}
 #cart-button{
 	float: right;	
