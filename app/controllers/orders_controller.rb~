@@ -65,7 +65,7 @@ end
 	  	      item.item_type = "order"
 	  	      item.save
 	  	   end
-	  	UserMailer.order_email(@order).deliver
+	  	UserMailer.order_email(@order, @user).deliver
       format.html { redirect_to @order, notice: 'Ваш заказ принят.' }
       format.json { render json: @order, status: :created, location: @rder }  
       else

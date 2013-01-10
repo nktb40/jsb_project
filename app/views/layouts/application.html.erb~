@@ -32,7 +32,7 @@
 				<div id="cart-button" >
 					<%= link_to cart_path, :class=>"btn btn-info" do %>
 					<i class="icon-shopping-cart"></i>
-					Перейти в корзину(<% total_quantity %>)
+					Перейти в корзину(<%= total_quantity %>)
 					<% end %>				
 				</div>
 			</div>    	

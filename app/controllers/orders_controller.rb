@@ -63,6 +63,7 @@ end
          @items = @user.cart_items.where(:item_type=>"cart")
 	  	   @items.each do |item|
 	  	      item.item_type = "order"
+	  	      item.order_id = @order.id
 	  	      item.save
 	  	   end
 	  	UserMailer.order_email(@order, @user).deliver

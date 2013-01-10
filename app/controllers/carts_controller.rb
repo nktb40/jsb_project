@@ -24,10 +24,10 @@ class CartsController < ApplicationController
    	@cartitem.quantity += 1
    	end
    	if @cartitem.save
-   	redirect_to @product, notice: 'Product was successfully added to your cart.'
+   	redirect_to :back, notice: 'Product was successfully added to your cart.'
 		end   
    else
-   redirect_to @product, notice: 'Product was not added'
+   redirect_to :back, notice: 'Product was not added'
    	
    end
   end

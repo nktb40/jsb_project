@@ -1,5 +1,4 @@
 <!--Блоки продуктов-->
-<%= paginate @products %>
 <div class="row">
 <ul class="thumbnails">
   <% @products.each do |product| %>
@@ -8,7 +7,12 @@
     <%= image_tag(product.image_url(:thumb)) %>
     <p><%= product.name %></p>
     <% end %>
+    <%= link_to add_to_cart_path(product), :class=>"btn btn-info" do %>					
+		<i class=" icon-white icon-plus"></i>
+		Добавить в корзину
+	 <% end %>
   </li>
   <% end %>
 </ul>
+<%= paginate @products %>
 </div>

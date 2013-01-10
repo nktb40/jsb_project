@@ -4,22 +4,26 @@
 
 <table class="table table-striped">
   <tr>
-    <th>Product id</th>
-    <th>User id</th>
-    <th>Quantity</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>№</th>
+    <th>Id пользователя</th>
+    <th>Имя заказчика</th>
+    <th>Email</th>
+    <th>Телефон</th>
+    <th>Адрес</th>
+    <th>Статус заказа</th>
   </tr>
-
+<% @i = 0 %>
 <% @admin_orders.each do |order| %>
   <tr>
-    <td><%= order.product_id %></td>
-    <td><%= order.user_id %></td>
-    <td><%= order.quantity %></td>
-    <td><%= link_to 'Show', order %></td>
-    <td><%= link_to 'Edit', edit_order_path(order) %></td>
-    <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <% @i += 1 %>
+  	 <td><%= @i %></td>
+  	 <td><%= order.user_id %></td>
+    <td><%= order.customer_name %></td>
+    <td><%= order.email %></td>
+    <td><%= order.phone %></td>
+    <td><%= order.adress %></td>
+    <td><%= order.status %></td>
+    <td><%= link_to "Детали", [:admin, order] %></td>
   </tr>
 <% end %>
 </table>

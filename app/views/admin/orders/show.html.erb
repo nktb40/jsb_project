@@ -1,5 +1,58 @@
-<p id="notice"><%= notice %></p>
+<h3>Заказ № <%= @order.id %></h3>
+<p>
+  <b>Статус:</b>
+  <% if @order.status == "processing" %>
+  	Обрабатывется
+  	<% else %>
+  	<%= @order.status %>
+  	<% end %>
+</p>
+<p>
+  <b>Имя:</b>
+  <%= @order.customer_name %>
+</p>
 
+<p>
+  <b>Email:</b>
+  <%= @order.email %>
+</p>
 
-<%= link_to 'Edit', edit_admin_order_path(@admin_order) %> |
+<p>
+  <b>Арес:</b>
+  <%= @order.adress %>
+</p>
+<p>
+<b>Телефон:</b>
+  <%= @order.phone %>
+</p>
+<b>Примечания:</b>
+  <%= @order.comments %>
+</p>
+<div class="container">
+<table class="table table-striped">
+  <tr>
+    <th>№</th>
+    <th>Товар</th>
+    <th>ID товара</th>
+    <th>Цена</th>
+    <th>Количество</th>
+    <th>Сумма</th>
+    <th></th>
+  </tr>
+<% @i =0 %>
+<% for item in @items %>
+<% @i+=1 %>
+  <tr>
+  	 <td><%= @i %></td>
+  	 <td><%= link_to item.product.name, product_url(item.product.id)  %></td>
+  	 <td><%= item.product_id %></td>
+  	 <td><%= item.product.price %></td>
+  	 <td><%= item.quantity %></td>
+  	 <td><%= item.quantity*item.product.price %></td>
+  	 <td><%= link_to "Удалить" %></td>
+  </tr>
+  <% end %>
+</table>
+</div>
+<%= link_to 'Edit', edit_admin_order_path(@order) %> |
 <%= link_to 'Back', admin_orders_path %>

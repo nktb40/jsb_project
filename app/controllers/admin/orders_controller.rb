@@ -15,8 +15,8 @@ class Admin::OrdersController < ApplicationController
   # GET /admin/orders/1
   # GET /admin/orders/1.json
   def show
-    @admin_order = Order.find(params[:id])
-
+    @order = Order.find(params[:id])
+	 @items = CartItem.where(:order_id=>@order.id)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @admin_order }
