@@ -1,12 +1,14 @@
-<%= simple_form_for(@admin_order) do |f| %>
+<%= simple_form_for([:admin, @admin_order]) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :product_id %>
-    <%= f.input :user_id %>
-    <%= f.input :quantity %>
+   <div class="form-inputs">
+    <%= f.input :customer_name, :label=>"Ваше имя", :input_html => {:placeholder=>"Ваше имя"} %>
+    <%= f.input :email, :label=>"Адрес электронной почты", :input_html => {:placeholder=>"Email"}%>
+    <%= f.input :adress, :label=>"Адрес доставки", :input_html => {:rows=>"5",:placeholder=>"Адрес доставки"} %>
+    <%= f.input :phone, :label=>"Телефонный номер", :input_html => {:placeholder=>"+7(yyy)xxx-xx-xx"} %>
+    <%= f.input :comments, :label=>"Дополнительные коментарии", :input_html => {:rows=>"5",:placeholder=>"Дополнительные пожелания по доставке и т.д."}%>
   </div>
-
+  
   <div class="form-actions">
     <%= f.button :submit %>
   </div>

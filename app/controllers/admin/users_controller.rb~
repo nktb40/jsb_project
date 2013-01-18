@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
 layout "admin"
+before_filter :authenticate_admin! # Tell devise to use :admin map
   # GET /admin/users
   # GET /admin/users.json
   def index

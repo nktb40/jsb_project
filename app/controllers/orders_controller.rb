@@ -1,20 +1,20 @@
 # coding: utf-8
 class OrdersController < ApplicationController
-before_filter :filter_current_user, :only => [:show]
+before_filter :filter_current_user, :only => [:index, :show]
 
 
 def filter_current_user
-	unless current_user
+	unless current_or_guest_user
     flash[:error] = "unauthorized access"
     redirect_to root_path
     false
   end
 end
 
-  # GET /orders
-  # GET /orders.json
+
   def index
-    @orders = Order.all
+    @user = current_or_guest_user
+    @orders = @user.orders.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,7 +26,8 @@ end
   # GET /orders/1.json
   def show
     @order = Order.find(params[:id])
-
+    @user = current_or_guest_user
+	 @cartitems = @user.orders.find(@order.id).cart_items.where(:item_type=>"order")    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @order }
@@ -44,13 +45,7 @@ end
     end
   end
 
-  # GET /orders/1/edit
-  def edit
-    @order = Order.find(params[:id])
-  end
 
-  # POST /orders
-  # POST /orders.json
   def create
     @order = Order.new(params[:order])
 	 @user = current_or_guest_user
@@ -68,39 +63,12 @@ end
 	  	   end
 	  	UserMailer.order_email(@order, @user).deliver
       format.html { redirect_to @order, notice: 'Ваш заказ принят.' }
-      format.json { render json: @order, status: :created, location: @rder }  
+      format.json { render json: @order, status: :created, location: @order }  
       else
         format.html { render action: "new" }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
   end
-
-  # PUT /orders/1
-  # PUT /orders/1.json
-  def update
-    @order = Order.find(params[:id])
-
-    respond_to do |format|
-      if @order.update_attributes(params[:order])
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /orders/1
-  # DELETE /orders/1.json
-  def destroy
-    @order = Order.find(params[:id])
-    @order.destroy
-
-    respond_to do |format|
-      format.html { redirect_to orders_url }
-      format.json { head :no_content }
-    end
-  end
+  
 end

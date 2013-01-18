@@ -1,6 +1,4 @@
-<div class="page-header">
   <h3>Пользователи</h3>
-</div>
 
 
 <table class="table table-striped">
@@ -28,7 +26,7 @@
   </tr>
 <% end %>
 </table>
-
+<%= paginate @users %>
 <br />
 
 <%= link_to 'New User', new_admin_user_path %>

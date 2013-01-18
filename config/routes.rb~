@@ -1,13 +1,14 @@
 JsbProject::Application.routes.draw do
-  resource :cart
+
+  resource :cart, only: [:show]
   
-  resources :cart_items, only: [:index, :show, :new]
+  resources :cart_items, only: [:create, :update, :destroy]
   
   devise_for :admins
 
   devise_for :users
 
-  resources :orders
+  resources :orders, only: [:index, :show, :new, :create]
 
 
   get "pages/home"

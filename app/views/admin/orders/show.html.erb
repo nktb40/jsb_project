@@ -49,7 +49,7 @@
   	 <td><%= item.product.price %></td>
   	 <td><%= item.quantity %></td>
   	 <td><%= item.quantity*item.product.price %></td>
-  	 <td><%= link_to "Удалить" %></td>
+  	 <td><%= link_to "Удалить" , item, method: :delete %></td>
   </tr>
   <% end %>
 </table>

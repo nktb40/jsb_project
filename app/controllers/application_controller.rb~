@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_or_guest_user
   helper_method :guest_user
   helper_method :total_quantity
+  helper_method :sum_up
   
   protect_from_forgery
 
@@ -74,6 +75,12 @@ class ApplicationController < ActionController::Base
       item.user_id = current_user.id
       item.save
     end
+    
+    guest_orders = guest_user.orders.all
+    guest_orders.each do |order|
+      order.user_id = current_user.id
+      item.save
+    end
   end
 
   def create_guest_user
@@ -84,11 +91,32 @@ class ApplicationController < ActionController::Base
   
    def total_quantity
   	 @user = current_or_guest_user
-  	 @items = @user.cart_items.all
+  	 @items = @user.cart_items.where(:item_type=>"cart")
   	 @quantity = 0
   	 @items.each do |item|
   	 	@quantity += item.quantity
   	 end	
   	 @quantity
   end  
+  
+   def sum_up(user)
+  	 @user = user
+  	 @items = @user.cart_items.where(:item_type=>"cart")
+  	 @sum = 0
+  	 @items.each do |item|
+  	 	@sum += (Product.find(item.product_id).price * item.quantity)
+  	 end	
+  	 @sum
+  end
+  
+  def sum_up_order(order)
+    @order = order
+  	 @user = User.find(@order.user_id)
+  	 @items = @user.orders.find(@order.id).cart_items.where(:item_type=>"order")
+  	 @sum = 0
+  	 @items.each do |item|
+  	 	@sum += (Product.find(item.product_id).price * item.quantity)
+  	 end	
+  	 @sum
+  end
 end

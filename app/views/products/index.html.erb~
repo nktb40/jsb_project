@@ -6,13 +6,14 @@
     <%= link_to product, :class =>"thumbnail" do %>
     <%= image_tag(product.image_url(:thumb)) %>
     <p><%= product.name %></p>
-    <% end %>
+    
     <%= link_to add_to_cart_path(product), :class=>"btn btn-info" do %>					
 		<i class=" icon-white icon-plus"></i>
 		Добавить в корзину
 	 <% end %>
+	 <% end %>
   </li>
   <% end %>
 </ul>
-<%= paginate @products %>
+<%= paginate @orders %>
 </div>

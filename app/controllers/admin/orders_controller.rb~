@@ -4,7 +4,7 @@ class Admin::OrdersController < ApplicationController
   # GET /admin/orders
   # GET /admin/orders.json
   def index
-    @admin_orders = Order.all
+    @admin_orders = Order.page(params[:page]).per(3)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,7 @@ class Admin::OrdersController < ApplicationController
   # GET /admin/orders/1.json
   def show
     @order = Order.find(params[:id])
-	 @items = CartItem.were(:order_id=>@order.id)
+	 @items = CartItem.where(:order_id=>@order.id)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @admin_order }
@@ -55,24 +55,18 @@ class Admin::OrdersController < ApplicationController
     end
   end
 
-  # PUT /admin/orders/1
-  # PUT /admin/orders/1.json
   def update
     @admin_order = Order.find(params[:id])
 
     respond_to do |format|
-      if @admin_order.update_attributes(params[:admin_order])
-        format.html { redirect_to @admin_order, notice: 'Order was successfully updated.' }
-        format.json { head :no_content }
+      if @admin_order.update_attributes(params[:order])
+        format.html { redirect_to [:admin, @admin_order], notice: 'Order was successfully updated.' }
       else
         format.html { render action: "edit" }
-        format.json { render json: @admin_order.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /admin/orders/1
-  # DELETE /admin/orders/1.json
   def destroy
     @admin_order = Order.find(params[:id])
     @admin_order.destroy

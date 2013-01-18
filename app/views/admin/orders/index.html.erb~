@@ -1,16 +1,18 @@
 <div class="page-header">
   <h3>Таблица заказов</h3>
 </div>
-
+<%= paginate @admin_orders %>
 <table class="table table-striped">
   <tr>
     <th>№</th>
-    <th>Id пользователя</th>
+    <th>Id Польз.</th>
     <th>Имя заказчика</th>
     <th>Email</th>
     <th>Телефон</th>
     <th>Адрес</th>
     <th>Статус заказа</th>
+    <th></th>
+    <th></th>
   </tr>
 <% @i = 0 %>
 <% @admin_orders.each do |order| %>
@@ -23,7 +25,8 @@
     <td><%= order.phone %></td>
     <td><%= order.adress %></td>
     <td><%= order.status %></td>
-    <td><%= link_to "Детали", [:admin, @order] %></td>
+    <td><%= link_to "Детали", [:admin, order] %></td>
+    <td><%= link_to 'Удалить', [:admin, order], method: :delete %></td>
   </tr>
 <% end %>
 </table>

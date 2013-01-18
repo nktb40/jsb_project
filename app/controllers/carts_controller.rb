@@ -1,8 +1,5 @@
 # coding: utf-8
 class CartsController < ApplicationController
-  helper_method :sum_up
-  def index
-  end
 
   def show
     @user = current_or_guest_user
@@ -32,15 +29,6 @@ class CartsController < ApplicationController
    end
   end
   
-  def sum_up
-  	 @user = current_or_guest_user
-  	 @items = @user.cart_items.where(:item_type=>"cart")
-  	 @sum = 0
-  	 @items.each do |item|
-  	 	@sum += (Product.find(item.product_id).price * item.quantity)
-  	 end	
-  	 @sum
-  end
   
   def recalculate
    @user = current_or_guest_user

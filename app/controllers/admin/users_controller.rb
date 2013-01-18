@@ -4,7 +4,7 @@ before_filter :authenticate_admin! # Tell devise to use :admin map
   # GET /admin/users
   # GET /admin/users.json
   def index
-    @admin_users = User.all
+    @admin_users = User.page(params[:page]).per(5)
 
     respond_to do |format|
       format.html # index.html.erb

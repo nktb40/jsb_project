@@ -1,7 +1,7 @@
 <div class="page-header">
   <h3>Таблица всех товаров</h3>
 </div>
-
+<%= paginate @products %>
 <%= form_tag destroy_multiple_admin_products_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
 <p>
 <%= link_to "Добавить товар", new_admin_product_path, :class => 'btn btn-success' %>
@@ -34,10 +34,9 @@
     <td><%= product.price%>  руб. </td> 
     <td><%= product.product_status%> </td>
     <td><%= link_to "Изменить", edit_admin_product_path(product)  %></td>
-    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', product, method: :delete %></td>
  
   </tr>
 <% end %>
 </table>
-
 <% end %>

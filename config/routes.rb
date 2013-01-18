@@ -1,5 +1,6 @@
 JsbProject::Application.routes.draw do
-  resource :cart
+
+  resource :cart, only: [:show]
   
   resources :cart_items, only: [:create, :update, :destroy]
   
@@ -7,8 +8,9 @@ JsbProject::Application.routes.draw do
 
   devise_for :users
 
-  resources :orders
+  resources :orders, only: [:index, :show, :new, :create]
 
+  resources :products, only: [:index, :show]
 
   get "pages/home"
 
@@ -34,8 +36,6 @@ JsbProject::Application.routes.draw do
     resources :users
   end
 
-
-  resources :products
   
 
 

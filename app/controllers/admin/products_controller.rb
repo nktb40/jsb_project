@@ -3,7 +3,7 @@ class Admin::ProductsController < ApplicationController
 
    before_filter :authenticate_admin! # Tell devise to use :admin map
   def index
-    @products = Product.all
+    @products = Product.page(params[:page]).per(3)
 
   end
 
