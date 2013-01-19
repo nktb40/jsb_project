@@ -1,0 +1,27 @@
+<table class="table table-condensed">
+  <tr>
+    <th>#</th>
+    <th>Товар</th>
+    <th>Цена</th>
+    <th>Количество</th>
+    <th>Сумма</th>
+  </tr>
+<% @i =0 %>
+<% for item in @cartitems %>
+<% @i+=1 %>
+  <tr>
+  	 <td><%= @i %></td>
+  	 <td><%= link_to item.product.name, product_path(item.product.id) %></td>
+  	 <td><%= item.product.price %> руб.</td>
+  	 <td><%= item.quantity %> шт.</td>
+  	 <td><%= item.quantity*item.product.price %> руб.</td>
+  </tr>
+  <% end %>
+  <tr>
+  		<td></td>
+  		<td></td>
+  		<td></td>
+		<td><b>Итог:</b></td>
+		<td><b><%= sum_up_order(@order) %> руб.</b></td> 
+  </tr>
+</table>

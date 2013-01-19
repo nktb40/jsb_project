@@ -1,7 +1,9 @@
+<h3>Ваша корзина</h3>
 
-<table class="table table-bordered">
+<%= form_tag update_multiple_cart_items_path, :method => :put do %>
+<table class="table table-condensed">
   <tr>
-    <th>№</th>
+    <th>#</th>
     <th>Товар</th>
     <th>Цена</th>
     <th>Количество</th>
@@ -11,25 +13,27 @@
 <% @i =0 %>
 <% for item in @cartitems %>
 <% @i+=1 %>
-  <tr>
-  	 <td><%= @i %></td>
-  	 <td><%= link_to item.product.name, product_url(item.product_id) %></td>
-  	 <td><%= item.product.price %></td>
-  	 <td><%= item.quantity %></td>
-  	 <td><%= item.quantity*item.product.price %></td>
-  	 <td><%= link_to "Удалить", item, method: :delete %></td>
-  </tr>
-  <% end %>
+	<tr>
+		<td><%= @i %></td>
+  	 	<td><%= link_to item.product.name, product_url(item.product_id) %></td>
+  	 	<td><%= item.product.price %> руб.</td>  	 	
+		<%= fields_for "cart_items[]", item do |f| %>
+				<td><%= f.text_field :quantity, :class => "small_text_field" %></td>
+		<% end %>
+		<td><%= item.quantity*item.product.price %> руб.</td>
+  	 	<td><%= link_to "Удалить", item, method: :delete %></td>
+</tr>
+<% end %>
   <tr>
   		<td></td>
   		<td></td>
   		<td></td>
 		<td><b>Итог:</b></td>
-		<td><b><%= sum_up(@user) %></b></td>
-		<td><%= link_to "Пересчитать", recalculate_path, :class=>"btn" %></td>  
+		<td><b><%= sum_up(@user) %> руб.</b></td>
+		<td><%= submit_tag "Пересчитать", :class=>"btn", :id=>"inputIcon" %></td>
   </tr>
 </table>
 <div class="new-order-btn">
 	<%= link_to "Оформить заказ", new_order_path, :class=>"btn" %>
 </div>
-
+<% end %>

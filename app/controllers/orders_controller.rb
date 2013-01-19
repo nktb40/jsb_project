@@ -14,7 +14,7 @@ end
 
   def index
     @user = current_or_guest_user
-    @orders = @user.orders.all
+    @orders = @user.orders.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb

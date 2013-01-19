@@ -2,6 +2,8 @@
 class UserMailer < ActionMailer::Base
   default from: "nktb40@gmail.com"
   
+    helper :application
+  
   def order_email(order, user)
     @user = user
     @order = order

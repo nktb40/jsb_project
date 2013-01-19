@@ -1,15 +1,6 @@
 class CartItemsController < ApplicationController
 
-  before_filter :filter_current_user, :only => [:update, :destroy]
 
-  def filter_current_user
-		unless current_user
-	    flash[:error] = "unauthorized access"
-	    redirect_to root_path
-	    false
-	  end
-  end
-	 
   def create
     @cart_item = CartItem.new(params[:cart_item])
 
@@ -28,7 +19,7 @@ class CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
 
     respond_to do |format|
-      if @cart_item.update_attributes(params[:cart_item])
+      if @cart_item.update(params[:cart_items])
         format.html { redirect_to @cart_item, notice: 'Cart item was successfully updated.' }
         format.json { head :no_content }
       else
@@ -38,6 +29,15 @@ class CartItemsController < ApplicationController
     end
   end
 
+  def update_multiple
+  	 @cartitems = CartItem.update(params[:cart_items].keys, params[:cart_items].values).reject { |p| p.errors.empty? }
+	  if @cartitems.empty?
+	    redirect_to cart_path
+	  else
+	    redirect_to cart_path
+     end
+  end
+  
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy

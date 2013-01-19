@@ -4,7 +4,7 @@ class Admin::OrdersController < ApplicationController
   # GET /admin/orders
   # GET /admin/orders.json
   def index
-    @admin_orders = Order.page(params[:page]).per(5)
+    @admin_orders = Order.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb

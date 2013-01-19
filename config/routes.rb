@@ -2,7 +2,11 @@ JsbProject::Application.routes.draw do
 
   resource :cart, only: [:show]
   
-  resources :cart_items, only: [:create, :update, :destroy]
+  resources :cart_items, only: [:create, :update, :destroy] do
+  	collection do
+      put 'update_multiple'
+  	end
+  end
   
   devise_for :admins
 

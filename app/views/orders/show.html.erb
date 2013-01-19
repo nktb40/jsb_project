@@ -18,9 +18,13 @@
   <%= @order.phone %>
 </p>
 <b>Примечания:</b>
+  <% if @order.comments = "" %>
+  нет
+  <% else %>
   <%= @order.comments %>
+  <% end %>
 </p>
 
 <%= render 'orders/order_table' %>
 
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Назад', orders_path %>

@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   helper_method :guest_user
   helper_method :total_quantity
   helper_method :sum_up
-  helper_method :sum_up_order
   protect_from_forgery
 
 	
@@ -109,14 +108,5 @@ class ApplicationController < ActionController::Base
   	 @sum
   end
   
-  def sum_up_order(order)
-    @order = order
-  	 @user = User.find(@order.user_id)
-  	 @items = @user.orders.find(@order.id).cart_items.where(:item_type=>"order")
-  	 @sum = 0
-  	 @items.each do |item|
-  	 	@sum += (Product.find(item.product_id).price * item.quantity)
-  	 end	
-  	 @sum
-  end
+ 
 end
