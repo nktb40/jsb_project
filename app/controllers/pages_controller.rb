@@ -10,4 +10,5 @@ class PagesController < ApplicationController
   
   def delivering
   end
+ 
 end

@@ -4,7 +4,7 @@ JsbProject::Application.routes.draw do
   
   resources :cart_items, only: [:create, :update, :destroy] do
   	collection do
-      post 'update_multiple'
+      put 'update_multiple'
   	end
   end
   

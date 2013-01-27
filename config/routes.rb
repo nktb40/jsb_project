@@ -25,6 +25,7 @@ JsbProject::Application.routes.draw do
   get "pages/delivering"
 
   get "admin" => "admin/pages#home"
+  get "admin/content" => "admin/pages#content"
   
   get "cart/add/:product_id" => "carts#add", :as => "add_to_cart"
   

@@ -22,5 +22,10 @@ module ApplicationHelper
   	 end	
   	 @sum
   end
+  
+  def get_random_products(count)        
+  	@products = Product.find(:all).sample(count)
+  	@products
+  end
  end
   

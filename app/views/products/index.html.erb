@@ -3,17 +3,23 @@
 <ul class="thumbnails">
   <% @products.each do |product| %>
   <li class="span4">
-    <%= link_to product, :class =>"thumbnail" do %>
-    <%= image_tag(product.image_url(:thumb)) %>
-    <p><%= product.name %></p>
-    
-    <%= link_to add_to_cart_path(product), :class=>"btn btn-info" do %>					
-		<i class=" icon-white icon-plus"></i>
-		Добавить в корзину
-	 <% end %>
-	 <% end %>
+    <%= link_to image_tag(product.image_url(:thumb)),  product  %>
+    <div class="caption">
+    	<p><%= product.name %></p>
+    	<p>Цена: <%= product.price %> руб.</p>
+    	<p> <%= link_to add_to_cart_path(product) do %>
+  			<i class="icon-shopping-cart"></i>
+  			Добавить в корзину
+  		<% end %>
+  		</p>
+  		<p><%= link_to product do %>
+  			<i class="icon-search"></i>
+  			Подробнее
+  		<% end %>
+    </div>
   </li>
   <% end %>
 </ul>
 <%= paginate @products %>
 </div>
+
