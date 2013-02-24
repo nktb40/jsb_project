@@ -26,5 +26,5 @@ production:
   database: jsb_project_production
   pool: 5
   host: localhost
-  username: deployer
+  username: jsb_project
   password: c72858nik472
