@@ -1,6 +1,6 @@
 require "bundler/capistrano"
 
-server "192.210.132.65", :web, :app, :db, primary: true
+server "192.168.1.103", :web, :app, :db, primary: true
 
 set :application, "jsb_project"
 set :user, "deployer"
