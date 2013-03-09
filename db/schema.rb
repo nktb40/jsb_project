@@ -33,11 +33,11 @@ ActiveRecord::Schema.define(:version => 20130109230942) do
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
 
   create_table "cart_items", :force => true do |t|
+    t.integer  "user_id"
     t.integer  "product_id"
     t.integer  "quantity"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "user_id"
     t.string   "item_type"
     t.integer  "order_id"
   end

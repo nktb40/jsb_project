@@ -50,6 +50,16 @@ JsbProject::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  
+  config.action_mailer.smtp_settings = {
+	  :address        => 'smtp.gmail.com',
+	  :port           => 587,
+	  :domain         => 'nktb40@gmail.com',
+	  :user_name      => 'nktb40',
+	  :password       => '40817810604120001262',
+	  :authentication => 'plain',
+     :enable_starttls_auto => true
+	}
 
   # Enable threaded mode
   # config.threadsafe!
